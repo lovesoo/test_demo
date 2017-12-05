@@ -13,7 +13,7 @@ from nose.tools import *
 
 def send_mail():
     # 读取测试报告内容
-    with open(report_file, 'r') as f:
+    with open(report_file, 'r',encoding='UTF-8') as f:
         content = f.read()
 
     msg = MIMEMultipart('mixed')
@@ -113,8 +113,7 @@ class test_doubanSearch(object):
 
     def test_q(self):
         # 校验搜索条件 q
-        #qs = [u'白夜追凶', u'大话西游', u'周星驰', u'张艺谋', u'周星驰,吴孟达', u'张艺谋,巩俐', u'周星驰,大话西游', u'白夜追凶,潘粤明']
-        qs = [u'白夜追凶']
+        qs = [u'白夜追凶', u'大话西游', u'周星驰', u'张艺谋', u'周星驰,吴孟达', u'张艺谋,巩俐', u'周星驰,西游', u'白夜追凶,潘粤明']
         for q in qs:
             params = dict(q=q)
             f = partial(test_doubanSearch.search, params)
@@ -219,7 +218,7 @@ if __name__ == '__main__':
 
     # 运行nosetests进行自动化测试并生成测试报告
     print ('Run Nosetests Now...')
-    os.system('nosetests -v test_doubanSearch_py3.py:test_doubanSearch --with-html-output --html-out-file={0}'.format(report_file))
+    os.system('nosetests -v test_doubanSearch_py3.py:test_doubanSearch --with-html --html-file={0}'.format(report_file))
 
     # 发送测试报告邮件
     print ('Send Test Report Mail Now...')
