@@ -116,7 +116,7 @@ class test_doubanSearch(object):
 
     def test_q(self):
         # 校验搜索条件 q
-        qs = [u'白夜追凶', u'大话西游', u'周星驰', u'张艺谋', u'周星驰,吴孟达', u'张艺谋,巩俐', u'周星驰,西游', u'白夜追凶,潘粤明']
+        qs = [u'白夜追凶', u'大话西游', u'周星驰', u'张艺谋', u'周星驰,吴孟达', u'张艺谋,巩俐', u'周星驰,大话西游', u'白夜追凶,潘粤明']
         for q in qs:
             params = dict(q=q)
             f = partial(test_doubanSearch.search, params)
