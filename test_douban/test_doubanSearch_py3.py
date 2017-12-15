@@ -13,7 +13,7 @@ from nose.tools import *
 
 def send_mail():
     # 读取测试报告内容
-    with open(report_file, 'r',encoding='UTF-8') as f:
+    with open(report_file, 'r', encoding='UTF-8') as f:
         content = f.read()
 
     msg = MIMEMultipart('mixed')
@@ -100,7 +100,7 @@ class test_doubanSearch(object):
         r = requests.get(url, params=params)
         print ('Search Params:\n', json.dumps(params, ensure_ascii=False))
         print ('Search Response:\n', json.dumps(r.json(), ensure_ascii=False, indent=4))
-        code = r.json().get('code',0)
+        code = r.json().get('code', 0)
         if code > 0:
             assert False, 'Invoke Error.Code:\t{0}'.format(code)
         else:
@@ -218,7 +218,7 @@ if __name__ == '__main__':
 
     # 运行nosetests进行自动化测试并生成测试报告
     print ('Run Nosetests Now...')
-    os.system('nosetests -v test_doubanSearch_py3.py:test_doubanSearch --with-html --html-file={0}'.format(report_file))
+    os.system('nosetests -v {0} --with-html --html-file={1}'.format(__file__, report_file))
 
     # 发送测试报告邮件
     print ('Send Test Report Mail Now...')

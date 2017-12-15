@@ -221,7 +221,7 @@ if __name__ == '__main__':
 
     # 运行nosetests进行自动化测试并生成测试报告
     print 'Run Nosetests Now...'
-    os.system('nosetests -v test_doubanSearch.py:test_doubanSearch --with-html --html-file={0}'.format(report_file))
+    os.system('nosetests -v {0} --with-html --html-file={1}'.format(__file__, report_file))
 
     # 发送测试报告邮件
     print 'Send Test Report Mail Now...'
